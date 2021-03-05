@@ -23,4 +23,15 @@ router.get("/:id/shoppinglist", async (req, res, next) => {
     }
 })
 
+router.get("/:id/instructions", async (req, res, next) => {
+    try{
+
+        const instruction = await recipes.getInstructions(req.params.id)
+        res.json(instruction)
+
+    } catch(err){
+        next(err)
+    }
+})
+
 module.exports = router
