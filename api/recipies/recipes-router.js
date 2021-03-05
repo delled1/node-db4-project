@@ -12,4 +12,15 @@ router.get("/", async (req, res, next) => {
     }
 })
 
+router.get("/:id/shoppinglist", async (req, res, next) => {
+    try{
+
+        const recipe = await recipes.getShoppingList(req.params.id)
+        res.json(recipe)
+
+    } catch(err){
+        next(err)
+    }
+})
+
 module.exports = router
